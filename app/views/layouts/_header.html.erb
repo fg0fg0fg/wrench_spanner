@@ -1,0 +1,54 @@
+<heder>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">
+    <div class="container">
+      <%= link_to "レンチとスパナ", root_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ユーザー一覧", admin_users_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "レビュー一覧", admin_posts_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :destroy, class: "nav-link" %>
+            </li>
+          <% elsif user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ユーザー一覧", users_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "レビュー一覧", posts_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :dstroy, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "About", about_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</heder>
