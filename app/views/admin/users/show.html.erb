@@ -3,9 +3,7 @@
     <div class="col-md-2">
       <%= image_tag @user.get_profile_image, size: "100x100", class: "d-block mx-auto", style: "border-radius: 50%;" %>
       <div class="mt-2">
-        <% if @user == current_user && !@user.guest_user? %>
-          <%= link_to "編集する", edit_user_path(@user), class: "btn btn-outline-success btn-block" %>
-        <% end %>
+        <%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-outline-success btn-block" %>
       </div>
     </div>
     <div class="col-md-6">
