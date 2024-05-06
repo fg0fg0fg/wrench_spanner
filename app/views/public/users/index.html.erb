@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row mx-auto mt-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-8 offset-md-1">
+      <div class="row mt-5 mt-md-0">
+        <% @users.each do |user| %>
+          <div class="col-md-4 mb-2">
+            <div class="card">
+              <%= image_tag user.get_profile_image, size: "100x100", class: "d-block mx-auto", style: "border-radius: 50%;" %>
+              <div class="card-header text-center"><%= user.name %></div>
+              <div class="card-body d-flex justify-content-between">
+                <div class="">レビュー数</div>
+                <div class="">
+                  <%= link_to "show", user_path(user), class: "btn btn-outline-info btn-block" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

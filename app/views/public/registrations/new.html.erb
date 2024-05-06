@@ -6,17 +6,17 @@
         <%= render "public/shared/error_messages", resource: resource %>
 
         <div class="form-group">
-          <%= f.label :名前 %><br>
+          <%= f.label :name, "名前" %><br>
           <%= f.text_field :name, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :メールアドレス %><br />
+          <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :パスワード %>
+          <%= f.label :password, "パスワード" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :パスワード（確認） %><br />
+          <%= f.label :password_confirmation, "パスワード（確認）" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
 
