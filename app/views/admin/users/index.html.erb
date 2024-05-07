@@ -3,17 +3,17 @@
     <div class="col-md-6">
       <table class="table">
         <% @users.each do |user| %>
-        <tbody>
-          <tr>
-            <td style="width: 20%;">
-              <%= link_to admin_user_path(user) do %>
+          <tbody>
+            <tr>
+              <td style="width: 20%;">
                 <%= image_tag user.get_profile_image, size: "50x50", class: "d-block mx-auto", style: "border-radius: 50%;" %>
-              <% end %>
-            </td>
-            <td style="width: 20%;"><%= user.name %></td>
-            <td style="width: 20%;">プロフィール</td>
-          </tr>
-        </tbody>
+              </td>
+              <td style="width: 20%;">
+                <%= link_to user.name, admin_user_path(user), class: "text-dark" %>
+              </td>
+              <td style="width: 20%;">レビュー数</td>
+            </tr>
+          </tbody>
         <% end %>
       </table>
     </div>

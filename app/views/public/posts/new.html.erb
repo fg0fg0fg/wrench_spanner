@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row justify-content-center mt-3">
     <div class="col-md-5">
-      <h4 class="mt-5">ユーザー情報編集</h4>
-      <%= render 'layouts/errors', obj: @post %>
+      <h4 class="mt-5">新規レビュー作成</h4>
+      <%= render 'layouts/errors', model: @post %>
       <%= form_with model: @post do |f| %>
         <div class="form-group">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :image, "プロフィール画像" %>
+          <%= f.label :image, "レビュー画像" %>
           <%= f.file_field :post_image, class: "form-control-file", accept: 'image/*' %>
         </div>
         <div class="form-group">

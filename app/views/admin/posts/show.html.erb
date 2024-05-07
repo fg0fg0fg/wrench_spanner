@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-center mt-3">
     <div class="col-md-2">
-      <%= image_tag @user.get_profile_image, size: "100x100", class: "d-block mx-auto", style: "border-radius: 50%;" %>
+      <%= image_tag @user.get_profile_image, size: "75x75", class: "d-block mx-auto", style: "border-radius: 50%;" %>
       <div class="mt-2 text-center">
-        <%= link_to user_path(@user) do %>
+        <%= link_to admin_user_path(@user) do %>
           <%= @user.name %>さん
         <% end %>
       </div>
@@ -24,10 +24,7 @@
   </div>
   <div class="row justify-content-end">
     <div class="col-md-2 text-right">
-      <% if @user == current_user %>
-        <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %>
-        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
-      <% end %>
+     <%= link_to "削除", admin_post_path(@post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
     </div>
   </div>
 </div>

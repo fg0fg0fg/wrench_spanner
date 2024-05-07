@@ -49,7 +49,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :star, :tag, :post_image)
+    params.require(:post).permit(:title, :body, :post_image)
   end
 
   def ensure_guest_user
@@ -59,7 +59,8 @@ class Public::PostsController < ApplicationController
   end
 
   def matching_login_user
-    @user = User.find(params[:id])
+    @post = Post.find(params[:id])
+    @user = @post.user
     unless @user.id == current_user.id
       redirect_to user_path(current_user)
     end
