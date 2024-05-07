@@ -12,15 +12,23 @@
       <div class=""><%= @user.introduction %></div>
     </div>
   </div>
-  <!--<div class="row">-->
-  <!--  <%# @posts.each do |post| %>-->
-  <!--  <div class="col-md-2">-->
-  <!--    <%#= image_tag post.get_post_image, size: "100x100" %>-->
-  <!--  </div>-->
-  <!--  <div class="col-md-6">-->
-  <!--    <div class=""><%#= post.title %></div>-->
-  <!--    <div class=""></div>-->
-  <!--  </div>-->
-  <!--  <#% end %>-->
-  <!--</div>-->
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+      <table class="table">
+        <% @posts.each do |post| %>
+          <tbody>
+            <tr>
+              <td style="width: 20%;">
+                <%= image_tag post.get_post_image, size: "50x50", class: "d-block mx-auto" %>
+              </td>
+              <td style="width: 20%;">
+                <%= link_to post.title, admin_post_path(post), class: "text-dark" %>
+              </td>
+              <td style="width: 20%;">評価</td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>

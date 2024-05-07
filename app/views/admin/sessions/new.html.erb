@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-5 mx-auto">
       <h4 class="mt-5">管理者ログイン</h4>
+      <%= render 'layouts/errors', model: @admin %>
       <%= form_with model: @admin, url: admin_session_path do |f| %>
         <div class="form-group">
           <%= f.label :email, "メールアドレス"%><br />
