@@ -4,17 +4,17 @@
       <h4 class="mt-5">管理者ログイン</h4>
       <%= render 'layouts/errors', model: @admin %>
       <%= form_with model: @admin, url: admin_session_path do |f| %>
-        <div class="form-group">
-          <%= f.label :email, "メールアドレス"%><br />
+        <div class="mb-3">
+          <%= f.label :email, "メールアドレス", class: "form-label" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :password, "パスワード" %><br />
+        <div class="mb-3">
+          <%= f.label :password, "パスワード", class: "form-label" %><br />
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
 
-        <div class="form-group">
+        <div class="d-flex justify-content-end mb-3">
           <%= f.submit "ログイン", class: "btn btn-primary" %>
         </div>
       <% end %>
