@@ -3,20 +3,20 @@
     <div class="col-md-5">
       <h4 class="mt-5">レビュー編集</h4>
       <%= render 'layouts/errors', model: @post %>
-      <%= form_with model: @post, url: post_path(@post) do |f| %>
-        <div class="form-group">
-          <%= f.label :title, "タイトル" %>
-          <%= f.text_field :name, class: "form-control" %>
+      <%= form_with model: @post do |f| %>
+        <div class="mb-3">
+          <%= f.label :title, "タイトル", class: "form-label" %>
+          <%= f.text_field :title, class: "form-control" %>
         </div>
-        <div class="form-group">
-          <%= f.label :image, "レビュー画像" %>
-          <%= f.file_field :post_image, class: "form-control-file", accept: 'image/*' %>
+        <div class="input-group mb-3">
+          <%= f.label :post_image, "レビュー画像", class: "input-group-text" %>
+          <%= f.file_field :post_image, class: "form-control", id: "inputGroupFile01", accept: 'image/*' %>
         </div>
-        <div class="form-group">
-          <%= f.label :body, "本文" %>
+        <div class="mb-3">
+          <%= f.label :body, "本文", class: "form-label" %>
           <%= f.text_area :body, rows: 3, class: "form-control" %>
         </div>
-        <div class="form-group">
+        <div class="d-flex justify-content-end mb-3">
           <%= f.submit "更新", class: "btn btn-block btn-success" %>
         </div>
       <% end %>
