@@ -19,11 +19,13 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @genres = Genre.all
   end
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @genre = @post.genre
     @post_comment = PostComment.new
   end
 
@@ -49,7 +51,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image)
+    params.require(:post).permit(:title, :body, :post_image, :genre_id)
   end
 
   def ensure_guest_user
