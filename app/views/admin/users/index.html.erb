@@ -2,21 +2,7 @@
   <div class="row justify-content-center mt-3">
     <div class="col-md-6">
       <h4 class="mt-2">ユーザー一覧</h4>
-      <table class="table">
-        <% @users.each do |user| %>
-          <tbody>
-            <tr>
-              <td style="width: 20%;">
-                <%= image_tag user.get_profile_image, size: "50x50", class: "d-block mx-auto", style: "border-radius: 50%;" %>
-              </td>
-              <td style="width: 20%;">
-                <%= link_to user.name, admin_user_path(user), class: "link-secondary link-underline-opacity-0 link-underline-opacity-75-hover" %>
-              </td>
-              <td style="width: 20%;">レビュー数</td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
+      <%= render 'index', users: @users %>
     </div>
   </div>
 </div>

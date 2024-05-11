@@ -15,7 +15,8 @@ class User < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
-
+  
+  #ゲスト関連
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -27,5 +28,18 @@ class User < ApplicationRecord
 
   def guest_user?
     email == GUEST_USER_EMAIL
+  end
+  
+  #検索機能
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
   end
 end

@@ -1,0 +1,8 @@
+<% if admin_signed_in? || user_signed_in? %>
+  <%= form_with url: searches_search_path, method: :get do |f| %>
+    <%= f.text_field :content %>
+    <%= f.select :model, options_for_select({"ユーザー"=>"user","レビュー"=>"post"}) %>
+    <%= f.select :method, options_for_select({"完全一致"=>"perfect","前方一致"=>"forward","後方一致"=>"backward","部分一致"=>"partial"}) %>
+    <%= f.submit "検索", class: "btn btn-secondary btn-sm" %>
+  <% end %>
+<% end %>
