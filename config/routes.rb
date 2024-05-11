@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get '/tag_searches/search' => 'tag_searches#search'
     resources :users, only: [:index, :edit, :show, :update, :destroy]
     resources :posts do
-      resources :commets, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
 

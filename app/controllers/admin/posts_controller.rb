@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @post_comment = PostComment.new
+    @comment = Comment.new
   end
 
   def destroy
