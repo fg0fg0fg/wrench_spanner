@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
-  
+
   get '/searches/search' => 'searches#search'
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :posts, only: [:index, :show, :destroy] do
-      resources :post_comment, only: [:destroy]
+      resources :comments, only: [:destroy]
     end
     resources :genres, only: [:index, :create, :edit, :update]
   end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get '/tag_searches/search' => 'tag_searches#search'
     resources :users, only: [:index, :edit, :show, :update, :destroy]
     resources :posts do
-      resources :post_commets, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
 

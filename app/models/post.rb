@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :genre
-  has_many :post_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_one_attached :post_image
 
