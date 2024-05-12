@@ -1,15 +1,7 @@
-
 <div class="container">
   <div class="row mx-auto mt-3">
     <div class="col-md-3">
-      <div class="border rounded text-center">
-        <h4>ジャンル一覧</h4>
-        <% @genres.each do |genre| %>
-          <div>
-            <%= link_to genre.name, admin_posts_path(genre_id: genre.id) %>
-          </div>
-        <% end %>
-      </div>
+      <%= render 'admin/genres/search', genres: @genres %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h4 class="mt-2">レビュー一覧</h4>
@@ -18,7 +10,7 @@
       <% else %>
         <%= @posts.count %>件
       <% end %>
-      <%= render 'index', posts: @posts %>
+      <%= render 'index', posts: @posts, post: @post %>
     </div>
   </div>
 </div>

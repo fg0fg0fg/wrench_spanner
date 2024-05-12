@@ -14,8 +14,8 @@ class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @genre = @post.genre
     @comment = Comment.new
+    @genres = Genre.all
   end
 
   def destroy

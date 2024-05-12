@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-header"><%= @user.name %>さん</div>
         <div class="card-body bg-success-subtle">
-          <div class="card-text"><%= @user.introduction %></div>
+          <div class="card-text"><%= simple_format(@user.introduction) %></div>
           <div class="card-text"><small class="text-body-secondary">レビュー数:</small></div>
           <div class="text-end">
             <% if @user == current_user && !@user.guest_user? %>
