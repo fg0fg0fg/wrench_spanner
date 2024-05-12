@@ -4,7 +4,7 @@
     <div class="col-md-8 offset-md-1">
       <div class="row mt-3">
         <div class="col-md-2">
-          <%= image_tag @user.get_profile_image, size: "50x50", class: "d-block mx-auto", style: "border-radius: 50%;" %>
+          <%= image_tag @user.get_profile_image, size: "50x50", class: "d-block mx-auto rounded-circle" %>
         </div>
         <div class="col-md-6">
           <div class="mt-2 text-start">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center mt-5">
+      <div class="row justify-content-center mt-3">
         <div class="col-md-3">
           <%= image_tag @post.get_post_image, size: "150x150", class: "d-block mx-auto" %>
         </div>
@@ -35,31 +35,31 @@
           </div>
         <% end %>
       </div>
-      <table>
-        <thead>
-          <%= form_with model: [@post, @comment] do |f| %>
-          <tr>
-            <%= f.text_area :body, rows: '5', class: "form-control" %>
-            <%= f.submit "送信" %>
-          </tr>
-          <% end %>
-        </thead>
+      <table class="table mx-5">
         <tbody>
           <% @post.comments.each do |comment| %>
             <tr>
-              <td><%= link_to(comment.user) do %>
-                <%= image_tag comment.user.get_profile_image, size:"50x50" %><br>
-                <%= comment.user.name %>
+              <td style="width:10%;">
+                <%= link_to(comment.user) do %>
+                  <%= image_tag comment.user.get_profile_image, size: "50x50", class: "rounded-circle" %>
                 <% end %>
               </td>
-              <td><%= comment.body %></td>
+              <td style="width:80%;"><%= comment.user.name %>さん<br><%= comment.body %></td>
               <% if comment.user == current_user %>
-                <td><%= link_to '削除', post_comment_path(comment.post,comment), method: :delete, class: "btn btn-danger btn-sm" %></td>
+                <td style="width:10%;" class="align-bottom">
+                  <%= link_to '削除', post_comment_path(comment.post,comment), method: :delete, class: "btn btn-outline-danger btn-sm align-item-bottom" %>
+                </td>
               <% end %>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <div class="row justify-content-center ms-5">
+        <%= form_with model: [@post, @comment] do |f| %>
+          <div><%= f.text_area :body, rows: '5', class: "form-control" %></div>
+          <div class="text-end mt-2"><%= f.submit "送信", class: "btn btn-outline-primary btn-sm" %></div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
