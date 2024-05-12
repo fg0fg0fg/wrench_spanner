@@ -5,13 +5,18 @@
         <h4>ジャンル一覧</h4>
         <% @genres.each do |genre| %>
           <div>
-            <%= link_to genre.name %>
+            <%= link_to genre.name, posts_path(genre_id: genre.id) %>
           </div>
         <% end %>
       </div>
     </div>
     <div class="col-md-8 offset-md-1">
       <h4 class="mt-2">レビュー一覧</h4>
+      <% if params[:genre_id] %>
+        <%= @genre.name %> : <%= @posts.count %>件
+      <% else %>
+        <%= @posts.count %>件
+      <% end %>
       <%= render 'index', posts: @posts %>
     </div>
   </div>
