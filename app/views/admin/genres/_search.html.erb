@@ -1,0 +1,12 @@
+<div class="border rounded text-center">
+  <h4>ジャンル一覧</h4>
+  <% genres.each do |genre| %>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to genre.name, posts_path(genre_id: genre.id) %>
+      <% else %>
+        <%= link_to genre.name, admin_posts_path(genre_id: genre.id) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
