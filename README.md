@@ -20,7 +20,10 @@
  * 購入した工具に問題が発生した時や使い方に疑問がある時
 
 ## 設計書
-後ほど作成予定
+ * [UIFlows](https://app.diagrams.net/#G1tlyPtFBAZ8SV8-snMcL8etu7MMGzLn6x#%7B%22pageId%22%3A%2248jVFMlgaSScSIEwnXbb%22%7D)
+ * [ER図](https://app.diagrams.net/#G1ke13IG1g1tkZ5dlOmnZjmGBdlAN0qKGr#%7B%22pageId%22%3A%22LkA-50vI9zVlM_wPANrl%22%7D)
+ * [テーブル定義書](https://docs.google.com/spreadsheets/d/1kZIcdf1ERcBKHwVdFhkK3prJIJivjBRRpHvuGgnDBF4/edit#gid=1044500859)
+ * [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1rmB_sPW4DirqTmrMa-MmgvL2oMjw9KMeYQA0NbWf8DQ/edit#gid=549108681)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
