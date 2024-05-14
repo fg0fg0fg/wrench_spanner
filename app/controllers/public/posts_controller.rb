@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image, :genre_id)
+    params.require(:post).permit(:title, :body, :post_image, :genre_id, :star)
   end
 
   def ensure_guest_user

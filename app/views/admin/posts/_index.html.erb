@@ -8,7 +8,10 @@
         <td style="width: 50%;">
           <%= link_to post.title, admin_post_path(post), class: "link-secondary link-underline-opacity-0 link-underline-opacity-75-hover" %>
         </td>
-        <td style="width: 40%;">コメント件数: <%= post.comments.count %></td>
+        <td style="width: 40%;">
+          <%= render 'public/posts/star', post: post %>
+          <%= render 'public/comments/count', post: post %>
+        </td>
       </tr>
     </tbody>
   <% end %>
