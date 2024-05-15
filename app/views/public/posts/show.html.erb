@@ -28,7 +28,12 @@
           <div class="mt-3"></div>
           <div class="mt-3"><%= simple_format(@post.body) %></div>
           <div class="count mt-3"><%= render 'public/comments/count', post: @post %></div>
-          <div class="col-auto"> : <%= @post.genre.name %></div>
+          <div class="col-auto">
+             : <%= @post.genre.name %>
+            <% @post_tags.each do |tag| %>
+             : <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="row justify-content-end mt-2">
