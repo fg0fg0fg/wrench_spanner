@@ -17,9 +17,9 @@
         <h4 class="mt-2">レビュー検索結果 "<%= @content %>"</h4>
         <% if @records.present? %>
           <% if user_signed_in? %>
-            <%= render 'public/users/index', users: @records %>
+            <%= render 'public/posts/index', posts: @records %>
           <% else %>
-            <%= render 'admin/users/index', users: @records %>
+            <%= render 'admin/posts/index', posts: @records %>
           <% end %>
         <% else %>
           <p>"<%= @content %>" は見つかりませんでした。</p>

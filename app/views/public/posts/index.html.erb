@@ -10,7 +10,32 @@
       <% else %>
         <%= @posts.count %>件
       <% end %>
-      <%= render 'index', posts: @posts %>
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+        <%= "(#{tag.posts.count})" %>
+      <% end %>
+      <ul class="nav nav-tabs justify-content-end">
+        <p>表示切り替え：</p>
+        <li class="nav-item">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#card" type="button">
+            アイコン
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#table" type="button">
+            一覧
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="card">
+          <%= render 'public/posts/index', posts: @posts %>
+        </div>
+        <div class="tab-pane" id="table">
+          <%= render 'admin/posts/index', posts: @posts %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+

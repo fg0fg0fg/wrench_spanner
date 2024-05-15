@@ -10,7 +10,9 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tags = params[:post][:name].split(',')
     if @post.save
+      @post.save_tags(tags)
       redirect_to post_path(@post), notice: "レビューを投稿しました"
     else
       render 'new'
@@ -18,10 +20,14 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @tags = Tag.all
     @genres = Genre.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
       @posts = @genre.posts
+    elsif params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @posts = @tag.posts
     else
       @posts = Post.all
     end
@@ -32,15 +38,19 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     @comment = Comment.new
     @genres = Genre.all
+    @post_tags = @post.tags
   end
 
   def edit
     @post = Post.find(params[:id])
+    @tags = @post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
+    tags = params[:post][:name].split(',')
     if @post.update(post_params)
+      @post.save_tags(tags)
       redirect_to post_path(@post), notice: "レビューを更新しました"
     else
       render 'edit'
