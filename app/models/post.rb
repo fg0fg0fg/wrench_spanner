@@ -39,9 +39,43 @@ class Post < ApplicationRecord
 
     new_tags.each do |new|
       tag = Tag.find_or_create_by(name: new)
-      self.tags << tag
+      unless self.tags.include?(tag)
+        self.tags << tag
+      end
     end
   end
 
+
+
+  # def save_tags(latest_tags)
+  #   if self.tags.empty?
+  #     latest_tags.each do |latest_tag|
+  #       self.tags.find_or_create_by(name: latest_tag)
+  #     end
+  #   elsif latest_tags.empty?
+
+
+  #     self.tags.each do |tag|
+  #       self.tags.delete(tag)
+  #     end
+  #   else
+  #     current_tags = self.tags.pluck(:name)
+
+  #     old_tags = current_tags - latest_tags
+
+  #     new_tags = latest_tags - current_tags
+
+  #     old_tags.each do |old_tag|
+  #       tag = self.tags.find_by(name: old_tag)
+  #       self.tags.delete(tag) if tag.present?
+  #     end
+
+
+  #     new_tags.each do |new_tag|
+
+  #       self.tags.find_or_create_by(name: new_tag)
+  #     end
+  #   end
+  # end
 
 end
