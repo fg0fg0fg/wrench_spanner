@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tags = params[:post][:name].split(',')
+    tags = params[:name].split(',')
     if @post.save
       @post.save_tags(tags)
       redirect_to post_path(@post), notice: "レビューを投稿しました"
@@ -38,7 +38,6 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     @comment = Comment.new
     @genres = Genre.all
-    @post_tags = @post.tags
   end
 
   def edit
@@ -51,34 +50,11 @@ class Public::PostsController < ApplicationController
     tags = params[:name].split(',')
     if @post.update(post_params)
       @post.save_tags(tags)
-      @post.tags.where.not(id: @post.tag_ids).destroy_all
       redirect_to post_path(@post), notice: "レビューを更新しました"
     else
       render 'edit'
     end
   end
-
-  # def update
-  #   # 1. カンマ区切りの文字列を配列にする
-  #   tag_names = params[:tag_name].split(",")
-  #   # 2. タグ名の配列をタグの配列にする
-  #   tags = tag_names.map { |tag_name| Tag.find_or_create_by(name: tag_name) }
-  #   # 3. タグのバリデーションを行い、バリデーションエラーがあればPostのエラーに加える
-  #   tags.each do |tag|
-  #     if tag.invalid?
-  #       @tag_name = params[:tag_name]
-  #       @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
-  #       return render :edit, status: :unprocessable_entity
-  #     end
-  #   end
-
-  #   if @post.update(post_params) && @post.update!(tags: tags)
-  #     redirect_to @post, notice: "Post was successfully updated.", status: :see_other
-  #   else
-  #     @tag_name = params[:tag_name]
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
 
   def destroy
     @post = Post.find(params[:id])

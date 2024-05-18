@@ -6,9 +6,9 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header"><%= @user.name %>さん</div>
-        <div class="card-body bg-body-tertiary">
+        <div class="card-body bg-success-subtle">
           <div class="card-text"><%= simple_format(@user.introduction) %></div>
-          <div class="card-text"><small class="text-body-secondary">レビュー数:</small></div>
+          <div class="card-text">レビュー数: <%= @user.posts.count %></div>
           <div class="text-end">
             <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-outline-success btn-block" %>
           </div>
@@ -16,8 +16,8 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-3">
-    <div class="col-md-6">
+  <div class="row mt-3">
+    <div class="col-md-6 mx-auto">
       <%= render 'admin/posts/index', posts: @posts %>
     </div>
   </div>

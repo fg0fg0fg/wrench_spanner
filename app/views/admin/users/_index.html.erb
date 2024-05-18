@@ -8,7 +8,7 @@
         <td style="width: 20%;">
           <%= link_to user.name, admin_user_path(user), class: "link-secondary link-underline-opacity-0 link-underline-opacity-75-hover" %>
         </td>
-        <td style="width: 20%;">レビュー数</td>
+        <td style="width: 20%;">レビュー数: <%= user.posts.count %></td>
       </tr>
     </tbody>
   <% end %>

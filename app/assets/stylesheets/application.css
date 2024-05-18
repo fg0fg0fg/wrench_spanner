@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
+.bg-image{
+  background-image: url("back_image.png");
+  background-size: 50%;
+  background-position: center;
+}
+
 .bg-img-top{
   background-image: url("top_image.jpg");
   background-size: cover;
@@ -34,5 +40,9 @@
 
 .bg-white{
   opacity: 0.8;
+  border-radius: 10px;
+}
+
+.bg-body{
   border-radius: 10px;
 }

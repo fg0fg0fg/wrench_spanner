@@ -8,13 +8,14 @@
       <% if params[:genre_id] %>
         <%= @genre.name %> : <%= @posts.count %>件
       <% else %>
-        <%= @posts.count %>件
+        全<%= @posts.count %>件
       <% end %>
       <% @tags.each do |tag| %>
-        <%# if tag.posts.count > 0 %>
-          <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+        <% if tag.posts.count > 0 %>
+          <i class="fa-solid fa-tags" style="color: #505050;"></i>
+          <%= link_to tag.name, posts_path(tag_id: tag.id), class: "link-primary link-underline-opacity-0 link-underline-opacity-100-hover" %>
           <%= "(#{tag.posts.count})" %>
-        <%# end %>
+        <% end %>
       <% end %>
       <%= render 'index', posts: @posts %>
     </div>
