@@ -17,6 +17,7 @@
   background-image: url("back_image.png");
   background-size: 50%;
   background-position: center;
+  padding: 10px 0px;
 }
 
 .bg-img-top{
@@ -45,4 +46,11 @@
 
 .bg-body{
   border-radius: 10px;
+  box-shadow: 5px 5px 50px -15px;
+}
+
+#notice{
+  background-color: #ccffcc;
+  color: green;
+  border-radius: 5px;
 }
