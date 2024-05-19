@@ -10,58 +10,21 @@
         </div>
         <div class="col-md-6">
           <div class="mt-2 text-start">
-            <%= link_to user_path(@user), class: "link-secondary link-underline-opacity-0 link-underline-opacity-75-hover" do %>
+            <%= link_to user_path(@user) do %>
               <%= @user.name %>さん
             <% end %>
           </div>
         </div>
       </div>
       <div class="row justify-content-center mt-3">
-        <div class="col-md-3">
-          <%= image_tag @post.get_post_image, size: "150x150", class: "d-block mx-auto" %>
-        </div>
-        <div class="col-md-8 px-0">
-          <div class="card">
-            <div class="card-header">
-              <div class="row justify-content-between">
-                <div class="col-auto"><strong><%= @post.title %></strong></div>
-                <div class="col-auto"><%= render "public/posts/star", post: @post %></div>
-              </div>
-            </div>
-            <div class="card-body bg-warning-subtle">
-              <div class="card-text"><%= simple_format(@post.body) %></div>
-              <div class="row justify-content-between">
-                <div class="col-auto">
-                  <div class="card-text"><%= render 'public/comments/count', post: @post %></div>
-                  <div class="card-text">
-                    ・<%= @post.genre.name %>
-                    <% @post.tags.each do |tag| %>
-                      <i class="fa-solid fa-tags" style="color: #505050;"></i>
-                      <%= link_to tag.name, posts_path(tag_id: tag.id) %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="col-auto">
-                  <% if @user == current_user %>
-                    <div class="mb-2">
-                      <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success" %>
-                    </div>
-                    <div>
-                      <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="index col-md-10 mt-2 ms-auto">
-          <%= render 'public/comments/index', post: @post %>
-        </div>
-        <div class="col-md-10 ms-auto">
+        <%= render 'public/posts/detail', post: @post %>
+      </div>
+      <div class="index col-md-10 mt-2 ms-auto">
+        <%= render 'public/comments/index', post: @post %>
+      </div>
+      <div class="col-md-10 ms-auto">
           <%= render 'public/comments/form', post: @post, comment: @comment %>
         </div>
-      </div>
     </div>
   </div>
 </div>
