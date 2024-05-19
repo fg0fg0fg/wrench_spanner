@@ -1,24 +1,8 @@
 <div class="container">
   <div class="row justify-content-center mt-3">
-    <div class="col-md-2 d-flex align-items-center">
-      <%= image_tag @user.get_profile_image, size: "150x150", class: "d-block mx-auto ", style: "border-radius: 50%;" %>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header"><%= @user.name %>さん</div>
-        <div class="card-body bg-success-subtle">
-          <div class="card-text"><%= simple_format(@user.introduction) %></div>
-          <div class="card-text"><small class="text-body-secondary">レビュー数:</small></div>
-          <div class="text-end">
-            <% if @user == current_user && !@user.guest_user? %>
-              <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-success btn-block" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'public/users/info', user: @user %>
   </div>
-  <div class="row mt-5">
+  <div class="row mt-3">
     <div class="col-md-2 mx-auto">
       <%= link_to "レビューを書く", new_post_path, class: "btn btn-primary btn-block" %>
     </div>

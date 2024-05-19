@@ -1,4 +1,4 @@
-<table class="table mx-5">
+<table class="table">
   <tbody>
     <% post.comments.each do |comment| %>
       <tr>
@@ -7,14 +7,14 @@
             <%= image_tag comment.user.get_profile_image, size: "50x50", class: "rounded-circle" %>
           <% end %>
         </td>
-        <td style="width:80%;"><%= comment.user.name %>さん<br><%= comment.body %></td>
+        <td style="width:75%;"><%= comment.user.name %>さん<br><%= simple_format(comment.body) %></td>
         <% if comment.user == current_user %>
-          <td style="width:10%;" class="align-bottom">
-            <%= link_to '削除', post_comment_path(comment.post,comment), method: :delete, class: "btn btn-outline-danger btn-sm align-item-bottom", remote: true %>
+          <td style="width:15%;" class="align-bottom text-end">
+            <%= link_to '削除', post_comment_path(comment.post,comment), method: :delete, class: "btn btn-outline-danger btn-sm", remote: true %>
           </td>
         <% elsif admin_signed_in? %>
-          <td style="width:10%;" class="align-bottom">
-            <%= link_to '削除', admin_post_comment_path(comment.post,comment), method: :delete, class: "btn btn-outline-danger btn-sm align-item-bottom", remote: true %>
+          <td style="width:10%;" class="align-bottom text-end">
+            <%= link_to '削除', admin_post_comment_path(comment.post,comment), method: :delete, class: "btn btn-outline-danger btn-sm", remote: true %>
           </td>
         <% end %>
       </tr>

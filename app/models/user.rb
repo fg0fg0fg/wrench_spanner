@@ -23,6 +23,7 @@ class User < ApplicationRecord
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
+      user.introduction = "ゲストは閲覧のみです。"
     end
   end
 

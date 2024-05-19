@@ -13,6 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ 
+body {
+  font-family: "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", "Hiragino Maru Gothic W4 JIS2004", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #404040;
+}
+
+
+.bg-image{
+  background-image: url("back_image.png");
+  background-size: 50%;
+  background-position: center;
+  padding: 10px 0px;
+}
+
 .bg-img-top{
   background-image: url("top_image.jpg");
   background-size: cover;
@@ -35,4 +49,24 @@
 .bg-white{
   opacity: 0.8;
   border-radius: 10px;
+}
+
+.bg-body{
+  border-radius: 10px;
+  box-shadow: 5px 5px 50px -15px;
+}
+
+#notice{
+  background-color: #ccffcc;
+  color: green;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  color: red;
 }

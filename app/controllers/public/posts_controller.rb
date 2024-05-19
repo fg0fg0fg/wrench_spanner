@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tags = params[:post][:name].split(',')
+    tags = params[:name].split(',')
     if @post.save
       @post.save_tags(tags)
       redirect_to post_path(@post), notice: "レビューを投稿しました"
@@ -38,7 +38,6 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     @comment = Comment.new
     @genres = Genre.all
-    @post_tags = @post.tags
   end
 
   def edit
@@ -48,7 +47,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tags = params[:post][:name].split(',')
+    tags = params[:name].split(',')
     if @post.update(post_params)
       @post.save_tags(tags)
       redirect_to post_path(@post), notice: "レビューを更新しました"

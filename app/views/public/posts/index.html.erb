@@ -3,39 +3,21 @@
     <div class="col-md-3">
       <%= render 'admin/genres/search', genres: @genres %>
     </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-8 offset-md-1 bg-body">
       <h4 class="mt-2">レビュー一覧</h4>
       <% if params[:genre_id] %>
         <%= @genre.name %> : <%= @posts.count %>件
       <% else %>
-        <%= @posts.count %>件
+        全<%= @posts.count %>件
       <% end %>
       <% @tags.each do |tag| %>
-        <%= link_to tag.name, posts_path(tag_id: tag.id) %>
-        <%= "(#{tag.posts.count})" %>
+        <% if tag.posts.count > 0 %>
+          <i class="fa-solid fa-tags" style="color: #505050;"></i>
+          <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+          <%= "(#{tag.posts.count})" %>
+        <% end %>
       <% end %>
-      <ul class="nav nav-tabs justify-content-end">
-        <p>表示切り替え：</p>
-        <li class="nav-item">
-          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#card" type="button">
-            アイコン
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#table" type="button">
-            一覧
-          </button>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="card">
-          <%= render 'public/posts/index', posts: @posts %>
-        </div>
-        <div class="tab-pane" id="table">
-          <%= render 'admin/posts/index', posts: @posts %>
-        </div>
-      </div>
+      <%= render 'index', posts: @posts %>
     </div>
   </div>
 </div>
-

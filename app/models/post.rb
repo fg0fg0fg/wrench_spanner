@@ -39,9 +39,9 @@ class Post < ApplicationRecord
 
     new_tags.each do |new|
       tag = Tag.find_or_create_by(name: new)
-      self.tags << tag
+      unless self.tags.include?(tag)
+        self.tags << tag
+      end
     end
   end
-
-
 end

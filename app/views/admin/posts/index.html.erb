@@ -3,14 +3,21 @@
     <div class="col-md-3">
       <%= render 'admin/genres/search', genres: @genres %>
     </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-8 offset-md-1 bg-body">
       <h4 class="mt-2">レビュー一覧</h4>
       <% if params[:genre_id] %>
         <%= @genre.name %> : <%= @posts.count %>件
       <% else %>
-        <%= @posts.count %>件
+        全<%= @posts.count %>件
       <% end %>
-      <%= render 'index', posts: @posts, post: @post %>
+      <% @tags.each do |tag| %>
+        <% if tag.posts.count > 0 %>
+          <i class="fa-solid fa-tags" style="color: #505050;"></i>
+          <%= link_to tag.name, admin_posts_path(tag_id: tag.id), class: "link-primary link-underline-opacity-0 link-underline-opacity-100-hover" %>
+          <%= "(#{tag.posts.count})" %>
+        <% end %>
+      <% end %>
+      <%= render 'index', posts: @posts %>
     </div>
   </div>
 </div>
