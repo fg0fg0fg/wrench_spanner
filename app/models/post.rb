@@ -43,5 +43,12 @@ class Post < ApplicationRecord
         self.tags << tag
       end
     end
+    
+    #test
+    Tag.all.each do |tag|
+      if tag.posts.count == 0
+        tag.delete
+      end
+    end
   end
 end
