@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="row justify-content-center mt-3">
-        <%= render 'public/posts/detail', post: @post %>
+        <%= render 'public/posts/detail', post: @post, user: @user %>
       </div>
       <div class="index col-md-10 ms-auto mt-2">
         <%= render 'public/comments/index', post: @post %>

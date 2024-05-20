@@ -11,11 +11,9 @@
         全<%= @posts.count %>件
       <% end %>
       <% @tags.each do |tag| %>
-        <%# if tag.posts.count > 0 %>
-          <i class="fa-solid fa-tags" style="color: #505050;"></i>
-          <%= link_to tag.name, posts_path(tag_id: tag.id) %>
-          <%= "(#{tag.posts.count})" %>
-        <%# end %>
+        <i class="fa-solid fa-tags" style="color: #505050;"></i>
+        <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+        <%= "(#{tag.posts.count})" %>
       <% end %>
       <%= render 'index', posts: @posts %>
     </div>

@@ -6,7 +6,7 @@
           <%= image_tag post.get_post_image, size: "50x50", class: "d-block mx-auto" %>
         </td>
         <td style="width: 60%;">
-          <%= link_to post.title, admin_post_path(post), class: "link-secondary link-underline-opacity-0 link-underline-opacity-75-hover" %>
+          <%= link_to post.title, admin_post_path(post) %>
         </td>
         <td style="width: 30%;">
           <%= render 'public/posts/star', post: post %>

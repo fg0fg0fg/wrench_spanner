@@ -19,6 +19,9 @@ body {
   color: #404040;
 }
 
+.logo,.nav-item{
+  font-weight: bold;
+}
 
 .bg-image{
   background-image: url("back_image.png");

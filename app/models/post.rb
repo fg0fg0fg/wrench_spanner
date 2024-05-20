@@ -44,7 +44,6 @@ class Post < ApplicationRecord
       end
     end
     
-    #test
     Tag.all.each do |tag|
       if tag.posts.count == 0
         tag.delete
