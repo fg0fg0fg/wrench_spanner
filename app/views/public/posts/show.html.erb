@@ -17,14 +17,14 @@
         </div>
       </div>
       <div class="row justify-content-center mt-3">
-        <%= render 'public/posts/detail', post: @post %>
+        <%= render 'public/posts/detail', post: @post, user: @user %>
       </div>
       <div class="index col-md-10 mt-2 ms-auto">
         <%= render 'public/comments/index', post: @post %>
       </div>
       <div class="col-md-10 ms-auto">
-          <%= render 'public/comments/form', post: @post, comment: @comment %>
-        </div>
+        <%= render 'public/comments/form', post: @post, comment: @comment %>
+      </div>
     </div>
   </div>
 </div>

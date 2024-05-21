@@ -3,6 +3,7 @@
     <div class="col-md-8 bg-body">
       <h4 class="mt-2">ユーザー一覧</h4>
       <%= render 'index', users: @users %>
+      <%= paginate @users, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

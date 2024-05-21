@@ -9,6 +9,10 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+  
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :star_count, -> {order(star: :desc)}
 
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.jpg'
@@ -44,7 +48,6 @@ class Post < ApplicationRecord
       end
     end
     
-    #test
     Tag.all.each do |tag|
       if tag.posts.count == 0
         tag.delete
