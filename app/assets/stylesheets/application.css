@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 body {
   font-family: "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", "Hiragino Maru Gothic W4 JIS2004", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #404040;
@@ -72,4 +72,8 @@ a {
 
 a:hover {
   color: red;
+}
+
+.pagination {
+  justify-content: center;
 }

@@ -3,19 +3,29 @@
     <div class="col-md-3">
       <%= render 'admin/genres/search', genres: @genres %>
     </div>
-    <div class="col-md-8 offset-md-1 bg-body">
-      <h4 class="mt-2">レビュー一覧</h4>
-      <% if params[:genre_id] %>
-        <%= @genre.name %> : <%= @posts.count %>件
-      <% else %>
-        全<%= @posts.count %>件
-      <% end %>
-      <% @tags.each do |tag| %>
-        <i class="fa-solid fa-tags" style="color: #505050;"></i>
-        <%= link_to tag.name, admin_posts_path(tag_id: tag.id) %>
-        <%= "(#{tag.posts.count})" %>
-      <% end %>
+    <div class="col-md-8 offset-md-1">
+      <div class="bg-primary-subtle p-1 rounded">
+        <div class="row">
+          <h4 class="mt-2 col-auto">レビュー一覧</h4>
+          <div class="col-auto pt-2">
+            <%= link_to '新しい順', admin_posts_path(@sort.merge(latest: true)) %>
+            |<%= link_to '古い順', admin_posts_path(@sort.merge(old: true)) %>
+            |<%= link_to '評価の高い順', admin_posts_path(@sort.merge(star_count: true)) %>
+          </div>
+        </div>
+        <% if params[:genre_id] %>
+          <%= @genre.name %> : <%= @all_posts %>件
+        <% else %>
+          全<%= @all_posts %>件
+        <% end %>
+        <% @tags.each do |tag| %>
+          <i class="fa-solid fa-tags" style="color: #505050;"></i>
+          <%= link_to tag.name, admin_posts_path(tag_id: tag.id) %>
+          <%= "(#{tag.posts.count})" %>
+        <% end %>
+      </div>
       <%= render 'index', posts: @posts %>
+      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
