@@ -5,10 +5,10 @@
         <i class="fa-solid fa-wrench fa-flip-horizontal fa-xl" style="color: #ffffff;"></i>
         <span class="logo">レンチ＆スパナ</span>
       <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end">
+      <div class="collapse navbar-collapse justify-content-end" id="navbar">
         <ul class="navbar-nav">
           <% if admin_signed_in? %>
             <li class="nav-item">
