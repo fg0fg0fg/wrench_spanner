@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col-md-8 mx-auto bg-body">
+    <div class="col-md-8 mx-auto">
       <% if @model == 'user' %>
-        <h4 class="mt-2">ユーザー検索結果 "<%= @content %>"</h4>
+        <h4 class="mt-2 bg-primary-subtle p-1 rounded d-inline-flex">
+          ユーザー検索結果 "<%= @content %>"<%= @records.count %>件
+        </h4>
         <% if @records.present? %>
           <% if user_signed_in? %>
             <%= render 'public/users/index', users: @records %>
@@ -10,10 +12,14 @@
             <%= render 'admin/users/index', users: @records %>
           <% end %>
         <% else %>
-          <p>"<%= @content %>" は見つかりませんでした。</p>
+          <p class="col-auto alert alert-danger d-inline-flex p-1">
+            "<%= @content %>" は見つかりませんでした。
+          </p>
         <% end %>
       <% elsif @model == 'post' %>
-        <h4 class="mt-2">レビュー検索結果 "<%= @content %>"</h4>
+        <h4 class="mt-2 bg-primary-subtle p-1 rounded d-inline-flex">
+          レビュー検索結果 "<%= @content %>"<%= @records.count %>件
+        </h4>
         <% if @records.present? %>
           <% if user_signed_in? %>
             <%= render 'public/posts/index', posts: @records %>
@@ -21,7 +27,9 @@
             <%= render 'admin/posts/index', posts: @records %>
           <% end %>
         <% else %>
-          <p>"<%= @content %>" は見つかりませんでした。</p>
+          <p  class="col-auto alert alert-danger d-inline-flex p-1">
+            "<%= @content %>" は見つかりませんでした。
+          </p>
         <% end %>
       <% end %>
     </div>
