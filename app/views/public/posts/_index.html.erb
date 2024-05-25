@@ -11,7 +11,13 @@
             <%= render 'public/posts/star', post: post %>
             <%= render 'public/comments/count', post: post %>
             <p>・<%= post.genre.name %></p>
-            <%= link_to "show", post_path(post), class: "btn btn-sm btn-outline-info" %>
+            <div class="d-flex justify-content-between">
+              <div>
+                <i class="fa-solid fa-heart" style="color: #f00;"></i>
+                <%= post.favorites.count %>
+              </div>
+              <%= link_to "show", post_path(post), class: "btn btn-sm btn-outline-info" %>
+            </div>
           </div>
         </div>
       </div>

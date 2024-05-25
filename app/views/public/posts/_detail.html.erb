@@ -13,7 +13,19 @@
       <div class="card-text"><%= simple_format(post.body) %></div>
       <div class="row justify-content-between">
         <div class="col-auto">
-          <div class="card-text"><%= render 'public/comments/count', post: post %></div>
+          <div id="count" class="d-inline-flex">
+            <%= render 'public/comments/count', post: post %>
+          </div>
+          <div id="like_<%= post.id %>" class="d-inline-flex">
+            <% unless admin_signed_in? || (current_user.email == ENV['GUEST_USER_EMAIL']) %>
+              <%= render 'public/favorites/like', post: post %>
+            <% else %>
+              <div>
+                <i class="fa-solid fa-heart" style="color: #f00;"></i>
+                <%= post.favorites.count %>
+              </div>
+            <% end %>
+          </div>
           <div class="card-text">
             ・<%= post.genre.name %>
             <% post.tags.each do |tag| %>

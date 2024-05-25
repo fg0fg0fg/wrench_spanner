@@ -11,6 +11,8 @@
         <td style="width: 30%;">
           <%= render 'public/posts/star', post: post %>
           <%= render 'public/comments/count', post: post %>
+          <i class="fa-solid fa-heart" style="color: #f00;"></i>
+          <%= post.favorites.count %>
         </td>
       </tr>
     </tbody>

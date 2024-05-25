@@ -1,4 +1,4 @@
-$(".count").html("<%= j(render 'public/comments/count', post: @comment.post) %>");
-$(".index").html("<%= j(render 'public/comments/index', post: @comment.post) %>");
+$("#count").html("<%= j(render 'public/comments/count', post: @comment.post) %>");
+$("#index").html("<%= j(render 'public/comments/index', post: @comment.post) %>");
 $("textarea").val('');
-$(".error").html("<%= j(render 'layouts/errors', model: @comment) %>");
+$("#error").html("<%= j(render 'layouts/errors', model: @comment) %>");
