@@ -26,7 +26,7 @@
  * [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1rmB_sPW4DirqTmrMa-MmgvL2oMjw9KMeYQA0NbWf8DQ/edit#gid=549108681)
 ​
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux(Amazon Linux 2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
