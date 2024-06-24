@@ -7,14 +7,14 @@
             <%= image_tag comment.user.get_profile_image, size: "50x50", class: "rounded-circle" %>
           <% end %>
         </td>
-        <td style="width:75%;"><%= comment.user.name %>さん<br><%= simple_format(comment.body) %></td>
+        <td style="width:75%;"><%= comment.user.name %>さん<br><%= simple_format(comment.body) %><br><%= l post.created_at %></td>
         <% if comment.user == current_user %>
           <td style="width:15%;" class="align-bottom text-end">
-            <%= link_to '削除', post_comment_path(comment.post,comment), method: :delete, class: "btn btn-outline-danger btn-sm", remote: true %>
+            <%= link_to '削除', post_comment_path(comment.post,comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger btn-sm", remote: true %>
           </td>
         <% elsif admin_signed_in? %>
           <td style="width:10%;" class="align-bottom text-end">
-            <%= link_to '削除', admin_post_comment_path(comment.post,comment), method: :delete, class: "btn btn-outline-danger btn-sm", remote: true %>
+            <%= link_to '削除', admin_post_comment_path(comment.post,comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger btn-sm", remote: true %>
           </td>
         <% end %>
       </tr>
