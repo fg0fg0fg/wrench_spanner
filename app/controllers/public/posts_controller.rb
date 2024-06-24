@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
     elsif params[:star_count]
       sort_posts = all_posts.star_count
     else
-      sort_posts = all_posts
+      sort_posts = all_posts.latest
     end
     @posts = sort_posts.page(params[:page]).per(12)
     @all_posts = all_posts.count
