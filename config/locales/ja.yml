@@ -10,6 +10,8 @@ ja:
         body: '本文'
       comment:
         body: 'コメント'
+      genre:
+        name: '名前'
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
