@@ -48,7 +48,9 @@
               <%= link_to "削除", post_path(post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
             </div>
           <% elsif admin_signed_in? %>
-            <%= link_to "削除", admin_post_path(post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
+            <div class="mt-5">
+            <%= link_to "削除", admin_post_path(post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger align-text-bottom" %>
+            </div>
           <% end %>
         </div>
       </div>

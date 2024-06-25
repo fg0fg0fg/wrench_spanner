@@ -23,7 +23,7 @@
         <%= render 'public/comments/index', post: @post %>
       </div>
       <div class="col-md-10 ms-auto">
-        <% unless current_user.email == ENV['GUEST_USER_EMAIL'] %>
+        <% unless admin_signed_in? || current_user.email == ENV['GUEST_USER_EMAIL'] %>
           <%= render 'public/comments/form', post: @post, comment: @comment %>
         <% end %>
       </div>

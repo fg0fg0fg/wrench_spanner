@@ -1,4 +1,5 @@
 class Admin::PostsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_admin!
 
   def index
@@ -13,16 +14,7 @@ class Admin::PostsController < ApplicationController
     else
       all_posts = Post.all
     end
-    if params[:latest]
-      sort_posts = all_posts.latest
-    elsif params[:old]
-      sort_posts = all_posts.old
-    elsif params[:star_count]
-      sort_posts = all_posts.star_count
-    else
-      sort_posts = all_posts.latest
-    end
-    @posts = sort_posts.page(params[:page]).per(20)
+    @posts = sort_posts(all_posts).page(params[:page]).per(20)
     @all_posts = all_posts.count
     @sort = {genre_id: params[:genre_id],tag_id: params[:tag_id]}
   end

@@ -1,7 +1,8 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!
+  include ApplicationHelper
+  before_action :authenticate_user!, unless: :admin_signed_in?
   before_action :matching_login_user, only: [:edit, :update, :destroy]
-  before_action :ensure_guest_user, only: [:new, :edit, :create, :update, :destroy]
+  before_action :ensure_guest_user, only: [:new]
 
   def new
     @post = Post.new
@@ -31,16 +32,7 @@ class Public::PostsController < ApplicationController
     else
       all_posts = Post.all
     end
-    if params[:latest]
-      sort_posts = all_posts.latest
-    elsif params[:old]
-      sort_posts = all_posts.old
-    elsif params[:star_count]
-      sort_posts = all_posts.star_count
-    else
-      sort_posts = all_posts.latest
-    end
-    @posts = sort_posts.page(params[:page]).per(12)
+    @posts = sort_posts(all_posts).page(params[:page]).per(12)
     @all_posts = all_posts.count
     @sort = {genre_id: params[:genre_id],tag_id: params[:tag_id]}
   end
@@ -53,12 +45,10 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @tags = @post.tags.pluck(:name).join(',')
   end
 
   def update
-    @post = Post.find(params[:id])
     tags = params[:name].split(',')
     if @post.update(post_params)
       @post.save_tags(tags)
@@ -69,7 +59,6 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(current_user), notice: "レビューを削除しました"
   end
@@ -81,7 +70,7 @@ class Public::PostsController < ApplicationController
   end
 
   def ensure_guest_user
-    if current_user.email == "guest@example.com"
+    if current_user.email == ENV['GUEST_USER_EMAIL']
       redirect_to user_path(current_user) , notice: "ゲストユーザーは閲覧のみです"
     end
   end

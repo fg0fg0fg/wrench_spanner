@@ -5,6 +5,4 @@ class Admin::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
   end
-
-
 end
